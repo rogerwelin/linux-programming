@@ -1,3 +1,6 @@
+/* error_functions.c
+   Some standard error handling routines used by various programs.
+*/
 #include <stdarg.h>
 #include "error_functions.h"
 #include "tlpi_hdr.h"
@@ -6,14 +9,14 @@
 #ifdef __GNUC__                 /* Prevent 'gcc -Wall' complaining  */
 __attribute__ ((__noreturn__))  /* if we call this function as last */
 #endif                          /* statement in a non-void function */
-  static void
-  terminate(Boolean useExit3)
+static void
+terminate(Boolean useExit3)
 {
     char *s;
 
     /* Dump core if EF_DUMPCORE environment variable is defined and
-     * is a nonempty string; otherwise call exit(3) or _exit(2),
-     * depending on the value of 'useExit3'. */
+       is a nonempty string; otherwise call exit(3) or _exit(2),
+       depending on the value of 'useExit3'. */
 
     s = getenv("EF_DUMPCORE");
 
@@ -26,17 +29,17 @@ __attribute__ ((__noreturn__))  /* if we call this function as last */
 }
 
 /* Diagnose 'errno' error by:
- *
- * * outputting a string containing the error name (if available
- *   in 'ename' array) corresponding to the value in 'err', along
- *   with the corresponding error message from strerror(), and
- *
- * * outputting the caller-supplied error message specified in
- *   'format' and 'ap'. */
+
+      * outputting a string containing the error name (if available
+        in 'ename' array) corresponding to the value in 'err', along
+        with the corresponding error message from strerror(), and
+
+      * outputting the caller-supplied error message specified in
+        'format' and 'ap'. */
 
 static void
 outputError(Boolean useErr, int err, Boolean flushStdout,
-            const char *format, va_list ap)
+        const char *format, va_list ap)
 {
 #define BUF_SIZE 500
     char buf[BUF_SIZE], userMsg[BUF_SIZE], errText[BUF_SIZE];
@@ -45,8 +48,8 @@ outputError(Boolean useErr, int err, Boolean flushStdout,
 
     if (useErr)
         snprintf(errText, BUF_SIZE, " [%s %s]",
-                            (err > 0 && err <= MAX_ENAME) ?
-                                            ename[err] : "?UNKNOWN?", strerror(err));
+                (err > 0 && err <= MAX_ENAME) ?
+                ename[err] : "?UNKNOWN?", strerror(err));
     else
         snprintf(errText, BUF_SIZE, ":");
 
@@ -59,7 +62,7 @@ outputError(Boolean useErr, int err, Boolean flushStdout,
 }
 
 /* Display error message including 'errno' diagnostic, and
- *    return to caller */
+   return to caller */
 
 void
 errMsg(const char *format, ...)
@@ -77,7 +80,7 @@ errMsg(const char *format, ...)
 }
 
 /* Display error message including 'errno' diagnostic, and
- *    terminate the process */
+   terminate the process */
 
 void
 errExit(const char *format, ...)
@@ -92,19 +95,19 @@ errExit(const char *format, ...)
 }
 
 /* Display error message including 'errno' diagnostic, and
- * terminate the process by calling _exit().
- *
- * The relationship between this function and errExit() is analogous
- * to that between _exit(2) and exit(3): unlike errExit(), this
- * function does not flush stdout and calls _exit(2) to terminate the
- * process (rather than exit(3), which would cause exit handlers to be
- * invoked).
- *
- * These differences make this function especially useful in a library
- * function that creates a child process that must then terminate
- * because of an error: the child must terminate without flushing
- * stdio buffers that were partially filled by the caller and without
- * invoking exit handlers that were established by the caller. */
+   terminate the process by calling _exit().
+
+   The relationship between this function and errExit() is analogous
+   to that between _exit(2) and exit(3): unlike errExit(), this
+   function does not flush stdout and calls _exit(2) to terminate the
+   process (rather than exit(3), which would cause exit handlers to be
+   invoked).
+
+   These differences make this function especially useful in a library
+   function that creates a child process that must then terminate
+   because of an error: the child must terminate without flushing
+   stdio buffers that were partially filled by the caller and without
+   invoking exit handlers that were established by the caller. */
 
 void
 err_exit(const char *format, ...)
@@ -119,7 +122,7 @@ err_exit(const char *format, ...)
 }
 
 /* The following function does the same as errExit(), but expects
- * the error number in 'errnum' */
+   the error number in 'errnum' */
 
 void
 errExitEN(int errnum, const char *format, ...)
@@ -166,7 +169,7 @@ usageErr(const char *format, ...)
 }
 
 /* Diagnose an error in command-line arguments and
- * terminate the process */
+   terminate the process */
 
 void
 cmdLineErr(const char *format, ...)
