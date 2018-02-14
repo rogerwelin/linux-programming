@@ -1,3 +1,5 @@
 .vagrant/
 lib/ename.c.inc
+*.o
+*.a
 tags
