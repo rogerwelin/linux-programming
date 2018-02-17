@@ -1,7 +1,7 @@
 include ../Makefile.inc
 
-GEN_EXE = atomic_append bad_exclusive_open copy \
-	flag seek_io t_readv t_truncate
+GEN_EXE = mem_segment necho \
+      display_env modify_env
 
 LINUX_EXE = large_file
 
