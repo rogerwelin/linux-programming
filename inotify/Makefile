@@ -1,6 +1,6 @@
 include ../Makefile.inc
 
-GEN_EXE = list_files nftw_dir_tree
+GEN_EXE = demo_inotify
 
 LINUX_EXE = large_file
 
