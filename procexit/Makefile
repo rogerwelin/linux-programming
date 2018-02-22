@@ -1,6 +1,6 @@
 include ../Makefile.inc
 
-GEN_EXE = t_fork fork_file_sharing fork_whos_on_first fork_sig_sync multi_wait
+GEN_EXE = exit_handlers fork_stdio_buf
 
 LINUX_EXE = large_file
 
