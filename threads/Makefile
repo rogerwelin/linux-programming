@@ -1,7 +1,9 @@
 include ../Makefile.inc
 
-GEN_EXE = simple_thread thread_incr \
-	  thread_incr_mutex
+GEN_EXE = simple_thread \
+          thread_incr \
+	  thread_incr_mutex \
+	  thread_cancel
 
 LINUX_EXE = large_file
 
