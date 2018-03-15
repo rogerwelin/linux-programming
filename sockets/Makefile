@@ -21,7 +21,7 @@ i6d_ucase_sv.o i6d_ucase_cl.o : i6d_ucase.h
 
 #id_echo_cl.o id_echo_sv.o : id_echo.h 
 
-#is_seqnum_sv.o is_seqnum_cl.o : is_seqnum.h 
+is_seqnum_sv.o is_seqnum_cl.o : is_seqnum.h 
 
 #is_seqnum_v2_sv.o is_seqnum_v2_cl.o : is_seqnum_v2.h 
 

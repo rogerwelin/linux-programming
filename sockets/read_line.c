@@ -10,9 +10,7 @@
   placed in buffer (which includes the newline character if encountered,
   but excludes the terminating null byte). */
 
-ssize_t
-readLine(int fd, void *buffer, size_t n)
-{
+ssize_t readLine(int fd, void *buffer, size_t n) {
     ssize_t numRead;                    /* # of bytes fetched by last read() */
     size_t totRead;                     /* Total bytes read so far */
     char *buf;
