@@ -17,7 +17,7 @@ all : ${EXE}
 
 allgen : ${GEN_EXE}
 
-#i6d_ucase_sv.o i6d_ucase_cl.o : i6d_ucase.h 
+i6d_ucase_sv.o i6d_ucase_cl.o : i6d_ucase.h 
 
 #id_echo_cl.o id_echo_sv.o : id_echo.h 
 
