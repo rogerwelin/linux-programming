@@ -136,18 +136,14 @@ inetPassiveSocket(const char *service, int type, socklen_t *addrlen,
   'service'. Make the socket a listening socket, with the specified
   'backlog'. Return socket descriptor on success, or -1 on error. */
 
-int
-inetListen(const char *service, int backlog, socklen_t *addrlen)
-{
+int inetListen(const char *service, int backlog, socklen_t *addrlen) {
     return inetPassiveSocket(service, SOCK_STREAM, addrlen, TRUE, backlog);
 }
 
 /* Create socket bound to wildcard IP address + port given in
    'service'. Return socket descriptor on success, or -1 on error. */
 
-int
-inetBind(const char *service, int type, socklen_t *addrlen)
-{
+int inetBind(const char *service, int type, socklen_t *addrlen) {
     return inetPassiveSocket(service, type, addrlen, FALSE, 0);
 }
 
@@ -158,10 +154,7 @@ inetBind(const char *service, int type, socklen_t *addrlen)
    also returned as the function result. The caller must specify the
    size of the 'addrStr' buffer in 'addrStrLen'. */
 
-char *
-inetAddressStr(const struct sockaddr *addr, socklen_t addrlen,
-               char *addrStr, int addrStrLen)
-{
+char *inetAddressStr(const struct sockaddr *addr, socklen_t addrlen, char *addrStr, int addrStrLen) {
     char host[NI_MAXHOST], service[NI_MAXSERV];
 
     if (getnameinfo(addr, addrlen, host, NI_MAXHOST,
