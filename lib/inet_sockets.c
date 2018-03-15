@@ -1,4 +1,5 @@
 /* inet_sockets.c
+
    A package of useful routines for Internet domain sockets.
 */
 #define _BSD_SOURCE             /* To get NI_MAXHOST and NI_MAXSERV
@@ -12,6 +13,7 @@
 
 /* The following arguments are common to several of the routines
    below:
+
         'host':         NULL for loopback IP address, or
                         a host name or numeric IP address
         'service':      either a name or a port number
@@ -22,7 +24,9 @@
   'host' + 'service'/'type'. Return socket descriptor on success,
   or -1 on error */
 
-int inetConnect(const char *host, const char *service, int type) {
+int
+inetConnect(const char *host, const char *service, int type)
+{
     struct addrinfo hints;
     struct addrinfo *result, *rp;
     int sfd, s;
@@ -134,14 +138,18 @@ inetPassiveSocket(const char *service, int type, socklen_t *addrlen,
   'service'. Make the socket a listening socket, with the specified
   'backlog'. Return socket descriptor on success, or -1 on error. */
 
-int inetListen(const char *service, int backlog, socklen_t *addrlen) {
+int
+inetListen(const char *service, int backlog, socklen_t *addrlen)
+{
     return inetPassiveSocket(service, SOCK_STREAM, addrlen, TRUE, backlog);
 }
 
 /* Create socket bound to wildcard IP address + port given in
    'service'. Return socket descriptor on success, or -1 on error. */
 
-int inetBind(const char *service, int type, socklen_t *addrlen) {
+int
+inetBind(const char *service, int type, socklen_t *addrlen)
+{
     return inetPassiveSocket(service, type, addrlen, FALSE, 0);
 }
 
@@ -152,7 +160,10 @@ int inetBind(const char *service, int type, socklen_t *addrlen) {
    also returned as the function result. The caller must specify the
    size of the 'addrStr' buffer in 'addrStrLen'. */
 
-char *inetAddressStr(const struct sockaddr *addr, socklen_t addrlen, char *addrStr, int addrStrLen) {
+char *
+inetAddressStr(const struct sockaddr *addr, socklen_t addrlen,
+               char *addrStr, int addrStrLen)
+{
     char host[NI_MAXHOST], service[NI_MAXSERV];
 
     if (getnameinfo(addr, addrlen, host, NI_MAXHOST,
@@ -163,4 +174,3 @@ char *inetAddressStr(const struct sockaddr *addr, socklen_t addrlen, char *addrS
 
     return addrStr;
 }
-
