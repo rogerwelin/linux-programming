@@ -2,7 +2,7 @@
 
 
 | Directory     | Subject                                  |
-| ------------- |:----------------------------------------:|
+| ------------- |-----------------------------------------:|
 | lib           | library routines used by other programs  |
 | alternativeio | Alternative I/O Models |
 | daemon        | Unix daemons    |
