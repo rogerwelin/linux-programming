@@ -80,3 +80,29 @@ After sending SIGKILL to zombie (PID=30685):
 30684 pts/0    00:00:00 make_zombie
 30685 pts/0    00:00:00 make_zombie <defunct>
 ```
+
+### make_zombie
+Demonstrates how to create a zombie process. Zombies are created if the parent exits and fails to calling wait()
+
+```console
+$ ./make_zombie
+Parent PID=30684
+Child (PID=30685) exiting
+30684 pts/0    00:00:00 make_zombie
+30685 pts/0    00:00:00 make_zombie <defunct>
+After sending SIGKILL to zombie (PID=30685):
+30684 pts/0    00:00:00 make_zombie
+30685 pts/0    00:00:00 make_zombie <defunct>
+```
+
+### t_execve & t_envargs
+Uses  execve() syscall; execve() loads a new program into a process memory. execve() is also used by interpreted languages using the shebang (#!)
+
+```console
+$ ./t_execve ./t_envargs      # all the output is printed by t_envargs
+argv[0] = t_envargs
+argv[1] = hello world
+argv[2] = goodbye
+environ: GREET=salut
+environ: BYE=adieu
+```
