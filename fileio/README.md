@@ -1,13 +1,14 @@
 ## Running programs
 
-### Copy (cp clone)
+### Copy
+Is a cp clone. Demonstrates open(), read() & write() syscalls
 
 ```console
 $ ./copy oldfile.txt newfile.txt 
 ```
 
 ### seek_io
-seek offset to 100,000, write "abc". Seek offset to 10,000, read 5 bytes from hole
+seek offset using lseek() syscall to 100,000, write "abc". Seek offset to 10,000, read 5 bytes from hole
 
 ```console
 $ touch apa.txt
