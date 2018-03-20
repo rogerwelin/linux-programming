@@ -42,6 +42,7 @@ int main(int argc, char *argv[]) {
     default:                          /* Parent: can see file changes made by child */
       if (wait(NULL) == -1)
         errExit("wait");              /* Wait for child to exit */
+      printf("Child has exited\n");
 
       printf("File offset in parent: %lld\n",
           (long long) lseek(fd, 0, SEEK_CUR));
