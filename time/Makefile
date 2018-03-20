@@ -1,7 +1,6 @@
 include ../Makefile.inc
 
-GEN_EXE = process_time necho \
-      display_env modify_env
+GEN_EXE = process_time
 
 LINUX_EXE = large_file
 

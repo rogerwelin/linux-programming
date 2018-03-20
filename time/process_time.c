@@ -2,10 +2,10 @@
 #include <time.h>
 #include "tlpi_hdr.h"
 
-static void displayProcessTime(const char *msg) {   /* Display 'msg' and process times */
-  stuct tms t;
+static void displayProcessTimes(const char *msg) {   /* Display 'msg' and process times */
+  struct tms t;
   clock_t clockTime;
-  static ling clockTicks = 0;
+  static long clockTicks = 0;
 
   if (msg != NULL)
     printf("%s", msg);

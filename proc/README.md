@@ -9,7 +9,7 @@ The square of 9973 is 99460729
 ```
 
 ### necho
-Demonstrates how cmd-line args work, see int argc and char `*argv[]
+Demonstrates how cmd-line args work, see int argc and char *argv[]*
 
 ```console
 $ ./necho hello world
@@ -19,7 +19,7 @@ argv[2] = world
 ```
 
 ### display_env
-Prints all environment variables in the shell using the global variable __extern char **environ__
+Prints all environment variables in the shell using the global variable _extern char **environ_
 
 ```console
 $ ./display_env
