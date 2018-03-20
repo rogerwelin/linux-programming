@@ -6,7 +6,7 @@
 | lib           | library routines used by other programs  |
 | alternativeio | Alternative I/O Models |
 | daemon        | Unix daemons    |
-| dirs          | Internet (IPv6 only    |
+| dirs          | Directories |
 | fileio        | File I/O |
 | files         | File Operations |
 | inotify       | Monitoring File Events |
